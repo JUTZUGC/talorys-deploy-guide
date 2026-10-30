@@ -1,0 +1,111 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "talorys",
+    "nameCn": "Talorys",
+    "repoName": "talorys-deploy-guide",
+    "oneLiner": "一个只属于你的 AI 助理，跑在你自己的 Cloudflare 账号里，聊天、记忆、任务、笔记和定时提醒都归你",
+    "officialRepo": "https://github.com/rociiu/talorys",
+    "officialDocs": "https://github.com/rociiu/talorys#4-deploy",
+    "stars": "1.4k",
+    "license": "MIT",
+    "highlights": [
+      "一条命令部署：npx create-talorys@latest",
+      "数据只在自己的账号里，开发者不接触",
+      "单用户设计：没有注册和团队，安装器设 owner 密码",
+      "记忆可管：事实、历史变更都能查看、编辑、删除",
+      "定时自动：提醒、日报与 AI 例程走 Durable Object 闹钟",
+      "断网也能用：任务、笔记、记忆不依赖模型"
+    ],
+    "mcpSupport": "Talorys 可在 Settings → Integrations 里连接远程 MCP server（支持无鉴权、Bearer Token 或 OAuth），并逐项选择允许调用的工具；本仓库的 MCP 只提供部署步骤与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-30",
+    "verification": [
+      [
+        "README 确认一条命令部署、Cloudflare 服务清单与免费额度说明",
+        "已核对 2026-10-30"
+      ],
+      [
+        "README 确认单用户设计、owner 密码与远程 MCP 配置方式",
+        "已核对 2026-10-30"
+      ],
+      [
+        "未实测 create-talorys 安装（需要 Cloudflare 账号授权）",
+        "说明 2026-10-30"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-10-30"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-30"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "requires": [
+        "node"
+      ],
+      "steps": [
+        "node -e \"console.log('Node', process.version)\"",
+        "npx create-talorys@latest",
+        "echo \"按安装器提示在浏览器完成 Cloudflare 授权，记下输出的 pages.dev 地址\""
+      ],
+      "stepsPs": [
+        "node -e \"console.log('Node', process.version)\"",
+        "npx create-talorys@latest",
+        "Write-Host \"按安装器提示在浏览器完成 Cloudflare 授权，记下输出的 pages.dev 地址\""
+      ],
+      "source": "https://github.com/rociiu/talorys#4-deploy"
+    },
+    "pitfalls": [
+      "npx 卡住不动：确认网络能访问 npm 与 Cloudflare，必要时换镜像源",
+      "授权页打不开：手动打开安装器打印的链接，或先运行 npx wrangler login",
+      "部署后 404：Pages 与 Worker 可能还没生效，等一分钟再刷新",
+      "登录不了：owner 密码只在安装时设置，忘了就重新部署一次",
+      "聊天不可用：Workers AI 当日额度用尽，次日恢复或升级计划",
+      "想用自定义域名：先部署成功，再到 Cloudflare Pages 里绑定",
+      "重复部署出两个站：安装器里选已有项目，不要新建"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/talorys-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/talorys-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "Talorys",
+    "Talorys 部署",
+    "Cloudflare 个人助理",
+    "AI 助理 自托管",
+    "Cloudflare Workers AI",
+    "talorys 教程",
+    "create-talorys",
+    "个人 AI 记忆 任务",
+    "talorys deploy guide",
+    "无服务器 AI 助理"
+  ],
+  "topics": [
+    "ai-agent",
+    "cloudflare",
+    "workers-ai",
+    "durable-objects",
+    "self-hosted",
+    "personal-assistant",
+    "talorys"
+  ]
+}

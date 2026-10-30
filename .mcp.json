@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "talorys-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
